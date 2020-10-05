@@ -12,7 +12,7 @@ logger = logging.getLogger()
 output_file_location = './TwitchHighlightsOutput'
 
 config = ConfigParser()
-config.read("/code/config/downloadsettings.cfg")
+config.read("src/config/downloadsettings.cfg")
 
 try:
     output_file_location = config['Download Settings']['output_file_location'] + datetime.datetime.now().strftime("%Y.%d.%m") + '/'

@@ -8,7 +8,7 @@ services:
     ports: [5000]
     volumes:
        - .:/src
-    command: ["python", "./main.py"]
+    command: ["python", "./src/main.py"]
     environment:
       TWITCH_OAUTH: "here"
       TWITCH_CLIENT_ID: "here"
