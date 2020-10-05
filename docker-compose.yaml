@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  service-devel:
+    build: ./docker/service.dockerfile
+    ports: 5000:5000
+    volumes: .:/src
+    command: [ "python", "./src/main.py" ]
+    environment:
+      TWITCH_OAUTH: "here"
+      TWITCH_CLIENT_ID: "here"

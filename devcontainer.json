@@ -1,0 +1,4 @@
+{
+    "dockerComposeFile": "./docker-compose.yaml",
+    "service": "service-devel"
+}
