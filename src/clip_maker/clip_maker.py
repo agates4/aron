@@ -17,7 +17,7 @@ except Exception as e:
 
 
 current_dir = os.path.dirname(__file__)
-config_rel_path = '../../res/downloadsettings.cfg'
+config_rel_path = '../config/downloadsettings.cfg'
 config_abs_path = os.path.join(current_dir, config_rel_path)
 config = ConfigParser()
 config.read(config_abs_path)

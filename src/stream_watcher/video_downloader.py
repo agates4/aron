@@ -4,23 +4,21 @@ import subprocess
 import datetime
 import os
 import sys
+import logging
+
+logger = logging.getLogger()
 
 #default output file location
-output_file_location = '../../output/'
-
-current_dir = os.path.dirname(__file__)
-config_rel_path = '../../res/downloadsettings.cfg'
-config_abs_path = os.path.join(current_dir, config_rel_path)
+output_file_location = './TwitchHighlightsOutput'
 
 config = ConfigParser()
-config.read(config_abs_path)
+config.read("/code/config/downloadsettings.cfg")
 
 try:
     output_file_location = config['Download Settings']['output_file_location'] + datetime.datetime.now().strftime("%Y.%d.%m") + '/'
 except Exception as e:
-    print('there was a problem accessing the downloadsettings.cfg file')
-    print(str(e))
-    print("assuming Default output file location")
+    logger.exception("There was a problem accessing the downloadsettings.cfg file")
+    logger.info("assuming Default output file location")
 
 if not os.path.exists(output_file_location):
                 print('Making dir ' + output_file_location)
@@ -48,7 +46,7 @@ def download_process_time(URI,download_name,time):
     path_to_res = os.path.abspath(os.path.join(os.path.dirname(__file__),'..','..','res'))
     this_stream_output_file_location = output_file_location + download_name +'/'
 
-    #command = ''.join(['../../res/youtube-dl.exe -f best -g ',URI])
+    #command = ''.join(['../config/youtube-dl.exe -f best -g ',URI])
     command = ''.join([path_to_res,'/youtube-dl.exe -f best -g ',URI])
     clipLink = subprocess.run(command, capture_output=True, text=True)
     if(clipLink.returncode):

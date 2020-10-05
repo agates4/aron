@@ -13,10 +13,10 @@ class DBClient:
     """
 
     current_dir = os.path.dirname(__file__)
-    db_config_rel_path = '../../res/db.cfg'
+    db_config_rel_path = '../config/db.cfg'
     db_config_abs_path = os.path.join(current_dir, db_config_rel_path)
 
-    dl_config_rel_path = '../../res/downloadsettings.cfg'
+    dl_config_rel_path = '../config/downloadsettings.cfg'
     dl_config_abs_path = os.path.join(current_dir, dl_config_rel_path)
 
     def __init__(self):

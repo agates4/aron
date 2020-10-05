@@ -2,10 +2,7 @@
 FROM python:3.8
 
 # set the working directory in the container
-WORKDIR /src
-
-RUN apt-get update && apt-get install -y \
-    ffmpeg
+WORKDIR /code
 
 # copy the dependencies file to the working directory
 COPY requirements.txt .

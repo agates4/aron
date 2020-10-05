@@ -34,7 +34,7 @@ This project runs on python 3.8 and uses mongodb as a database
 	`oauth: oauth:abcdefghijklmnopqrstuvwxyz1234567890`
 
 1. set vod download location
-    * set res/downloadsettings.cfg to match where you want vods to be downloaded
+    * set src/config/downloadsettings.cfg to match where you want vods to be downloaded
 
 
 ## set up pypi dependencies

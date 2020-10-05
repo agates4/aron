@@ -1,4 +1,7 @@
 {
     "dockerComposeFile": "./docker-compose.yaml",
-    "service": "service-devel"
+    "service": "service-devel",
+    "codespaces": {
+        "shouldEnableTmpMount" : false
+    }
 }
