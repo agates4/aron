@@ -46,8 +46,7 @@ def download_process_time(URI,download_name,time):
     path_to_res = os.path.abspath(os.path.join(os.path.dirname(__file__),'..','..','res'))
     this_stream_output_file_location = output_file_location + download_name +'/'
 
-    #command = ''.join(['../config/youtube-dl.exe -f best -g ',URI])
-    command = ''.join([path_to_res,'/youtube-dl.exe -f best -g ',URI])
+    command = ''.join(['youtube-dl -f best -g ',URI])
     clipLink = subprocess.run(command, capture_output=True, text=True)
     if(clipLink.returncode):
         print("An error occured Getting video link")
