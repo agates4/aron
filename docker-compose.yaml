@@ -7,8 +7,26 @@ services:
       dockerfile: ./docker/service.dockerfile
     ports: [5000]
     volumes:
-       - .:/src
-    command: ["python", "./src/main.py"]
+      - .:/src
+    depends_on: 
+      - mongodb
+    command: ["./docker/wait-for-it.sh", "mongodb:27017", "--", "python", "./src/main.py"]
     environment:
       TWITCH_OAUTH: "here"
       TWITCH_CLIENT_ID: "here"
+
+  # https://medium.com/faun/managing-mongodb-on-docker-with-docker-compose-26bf8a0bbae3?source=linkShare-febc41411321-1601869494
+  # nice guide. all the config here is setup so you just need to run
+  # docker-compose run service-devel
+  # and your local mongodb container will also run too.
+  # the wait-for-it script waits to run your service command
+  # until the mongodb container is ready
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    environment: 
+      - MONGO_INITDB_DATABASE=your-database-name # the name you want your database to have
+      - MONGO_INITDB_ROOT_USERNAME=my-container-root-username
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+    ports:
+      - "27017-27019:27017-27019"
